@@ -22,7 +22,7 @@
 ![本地视频](https://github.com/Javacr/PyQt5-YOLOv5/blob/v3.0/imgs/%E8%A7%86%E9%A2%91.png)
 
 
-**使用**
+**使用：**
 
 运行*main.py*即可开启检测界面。ui文件也已上传，可以按照自己的想法更改ui界面。
 
