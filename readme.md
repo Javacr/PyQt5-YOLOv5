@@ -21,6 +21,22 @@
 
 ![本地视频](https://github.com/Javacr/PyQt5-YOLOv5/blob/v3.0/imgs/%E8%A7%86%E9%A2%91.png)
 
+演示视频：
+[https://www.bilibili.com/video/BV1sQ4y1C7Vk?spm_id_from=333.999.0.0](https://www.bilibili.com/video/BV1sQ4y1C7Vk?spm_id_from=333.999.0.0)
+
+csdn:
+[https://blog.csdn.net/weixin_41735859/article/details/120507779?spm=1001.2014.3001.5501](https://blog.csdn.net/weixin_41735859/article/details/120507779?spm=1001.2014.3001.5501)
+
+**功能：**
+
+1. 模型选择
+2. 输入选择
+3. IoU调整
+4. 置信度调整
+5. 帧间延时调整
+6. 播放/暂停/结束
+7. 统计检测结果
+
 
 **使用：**
 
