@@ -7,6 +7,10 @@
 
 所有代码以及ui文件均已上传，直接clone后，运行 *main.py* 即可启动界面。
 
+**界面**
+
+![界面](https://github.com/Javacr/PyQt5-YOLOv5/blob/v3.0/imgs/%E7%95%8C%E9%9D%A2.jpg)
+
 **本地图片检测画面：**
 
 ![本地图片](https://github.com/Javacr/PyQt5-YOLOv5/blob/v3.0/imgs/%E5%9B%BE%E7%89%87.png)
