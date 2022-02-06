@@ -2,6 +2,11 @@
 本仓库的yolov5版本为**v5.0**，由于是直接从yolov5仓库下拉取下来的源码，本仓库也支持训练。本仓库依赖的模型下载地址：https://github.com/ultralytics/yolov5/releases/tag/v5.0
 下载链接中翻到最下面有下载链接.
 
-2022/2/6: 所有代码已上传，直接clone后，运行*main.py*即可开启界面。
+### 更新日期：2022/2/6
 
+所有代码以及ui文件均已上传，直接clone后，运行 *main.py* 即可启动界面。
 
+**本地图片检测画面：**
+![本地图片](https://github.com/Javacr/PyQt5-YOLOv5/blob/v3.0/imgs/%E5%9B%BE%E7%89%87.png)
+
+如遇到问题，欢迎issue
