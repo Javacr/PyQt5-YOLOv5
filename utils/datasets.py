@@ -237,7 +237,7 @@ class LoadWebcam:  # for inference
     def __init__(self, pipe='0', img_size=640, stride=32):
         self.img_size = img_size
         self.stride = stride
-        # self.pipe = eval(pipe) if pipe.isnumeric() else pipe
+        self.pipe = eval(pipe) if pipe.isnumeric() else pipe
         # cv2.CAP_DSHOW 可以在释放摄像头后不报错
         self.cap = cv2.VideoCapture(eval(pipe), cv2.CAP_DSHOW) if pipe.isnumeric() \
             else cv2.VideoCapture(pipe) # video capture object
