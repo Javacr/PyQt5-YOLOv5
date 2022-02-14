@@ -88,11 +88,11 @@ class DetThread(QThread):
                 model.half()  # to FP16
 
             # Dataloader
-            if self.source.isnumeric():
+            if self.source.isnumeric() or self.source.lower().startswith(('rtsp://', 'rtmp://', 'http://', 'https://')):
                 view_img = check_imshow()
                 cudnn.benchmark = True  # set True to speed up constant image size inference
                 dataset = LoadWebcam(self.source, img_size=imgsz, stride=stride)
-                bs = len(dataset)  # batch_size
+                # bs = len(dataset)  # batch_size
             else:
                 dataset = LoadImages(self.source, img_size=imgsz, stride=stride)
 
@@ -191,10 +191,8 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         # win10的CustomizeWindowHint模式，边框上面有一段空白。
         # 不想看到空白可以用FramelessWindowHint模式，但是需要重写鼠标事件才能通过鼠标拉伸窗口，比较麻烦
         # 不嫌麻烦可以试试, 写了一半不想写了，累死人
-        # self.setWindowFlags(Qt.CustomizeWindowHint)
+        self.setWindowFlags(Qt.CustomizeWindowHint)
         # self.setWindowFlags(Qt.FramelessWindowHint)
-        self.setWindowFlags(
-            Qt.Window | Qt.CustomizeWindowHint | Qt.WindowSystemMenuHint)
         # 自定义标题栏按钮
         self.minButton.clicked.connect(self.showMinimized)
         self.maxButton.clicked.connect(self.max_or_restore)
@@ -246,17 +244,31 @@ class MainWindow(QMainWindow, Ui_mainWindow):
 
     def chose_rtsp(self):
         self.rtsp_window = Window()
+        config_file = 'config/ip.json'
+        if not os.path.exists(config_file):
+            ip = "rtsp://admin:admin888@192.168.1.67:555"
+            new_config = {"ip": ip}
+            new_json = json.dumps(new_config, ensure_ascii=False, indent=2)
+            with open(config_file, 'w', encoding='utf-8') as f:
+                f.write(new_json)
+        else:
+            config = json.load(open(config_file))
+            ip = config['ip']
+        self.rtsp_window.rtspEdit.setText(ip)
         self.rtsp_window.show()
         self.rtsp_window.rtspButton.clicked.connect(lambda: self.load_rtsp(self.rtsp_window.rtspEdit.text()))
 
-    def load_rtsp(self, x):
+    def load_rtsp(self, ip):
         try:
             self.stop()
             MessageBox(
                 self.closeButton, title='提示', text='请稍等，正在加载rtsp视频流', time=1000, auto=True).exec_()
-            # 自动检测本机有哪些摄像头
-            self.det_thread.source = x
-            self.statistic_msg('加载rtsp：{}'.format(x))
+            self.det_thread.source = ip
+            new_config = {"ip": ip}
+            new_json = json.dumps(new_config, ensure_ascii=False, indent=2)
+            with open('config/ip.json', 'w', encoding='utf-8') as f:
+                f.write(new_json)
+            self.statistic_msg('加载rtsp：{}'.format(ip))
             self.rtsp_window.close()
         except Exception as e:
             self.statistic_msg('%s' % e)
@@ -418,9 +430,6 @@ class MainWindow(QMainWindow, Ui_mainWindow):
 
     def mouseMoveEvent(self, QMouseEvent):
         if Qt.LeftButton and self.m_flag:
-            if self.isMaximized():
-                self.showNormal()
-                self.maxButton.setChecked(False)
             self.move(QMouseEvent.globalPos() - self.m_Position)  # 更改窗口位置
             # QMouseEvent.accept()
 
