@@ -22,6 +22,7 @@ from utils.general import check_img_size, check_requirements, check_imshow, colo
 from utils.plots import colors, plot_one_box
 from utils.torch_utils import select_device, load_classifier, time_sync
 from utils.capnums import Camera
+from dialog.rtsp_win import Window
 
 
 class DetThread(QThread):
@@ -190,8 +191,10 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         # win10的CustomizeWindowHint模式，边框上面有一段空白。
         # 不想看到空白可以用FramelessWindowHint模式，但是需要重写鼠标事件才能通过鼠标拉伸窗口，比较麻烦
         # 不嫌麻烦可以试试, 写了一半不想写了，累死人
-        self.setWindowFlags(Qt.CustomizeWindowHint)
+        # self.setWindowFlags(Qt.CustomizeWindowHint)
         # self.setWindowFlags(Qt.FramelessWindowHint)
+        self.setWindowFlags(
+            Qt.Window | Qt.CustomizeWindowHint | Qt.WindowSystemMenuHint)
         # 自定义标题栏按钮
         self.minButton.clicked.connect(self.showMinimized)
         self.maxButton.clicked.connect(self.max_or_restore)
@@ -217,6 +220,7 @@ class MainWindow(QMainWindow, Ui_mainWindow):
 
         self.fileButton.clicked.connect(self.open_file)
         self.cameraButton.clicked.connect(self.chose_cam)
+        self.rtspButton.clicked.connect(self.chose_rtsp)
 
         self.runButton.clicked.connect(self.run_or_continue)
         self.stopButton.clicked.connect(self.stop)
@@ -239,6 +243,23 @@ class MainWindow(QMainWindow, Ui_mainWindow):
             self.det_thread.rate_check = True
         else:
             self.det_thread.rate_check = False
+
+    def chose_rtsp(self):
+        self.rtsp_window = Window()
+        self.rtsp_window.show()
+        self.rtsp_window.rtspButton.clicked.connect(lambda: self.load_rtsp(self.rtsp_window.rtspEdit.text()))
+
+    def load_rtsp(self, x):
+        try:
+            self.stop()
+            MessageBox(
+                self.closeButton, title='提示', text='请稍等，正在加载rtsp视频流', time=1000, auto=True).exec_()
+            # 自动检测本机有哪些摄像头
+            self.det_thread.source = x
+            self.statistic_msg('加载rtsp：{}'.format(x))
+            self.rtsp_window.close()
+        except Exception as e:
+            self.statistic_msg('%s' % e)
 
     def chose_cam(self):
         try:
@@ -397,6 +418,9 @@ class MainWindow(QMainWindow, Ui_mainWindow):
 
     def mouseMoveEvent(self, QMouseEvent):
         if Qt.LeftButton and self.m_flag:
+            if self.isMaximized():
+                self.showNormal()
+                self.maxButton.setChecked(False)
             self.move(QMouseEvent.globalPos() - self.m_Position)  # 更改窗口位置
             # QMouseEvent.accept()
 
