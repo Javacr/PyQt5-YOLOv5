@@ -100,6 +100,8 @@ class DetThread(QThread):
             if device.type != 'cpu':
                 model(torch.zeros(1, 3, imgsz, imgsz).to(device).type_as(next(model.parameters())))  # run once
             count = 0
+            # 跳帧检测
+            jump_count = 0
             start_time = time.time()
             dataset = iter(dataset)
             while True:
@@ -128,6 +130,9 @@ class DetThread(QThread):
                 # 暂停开关
                 if self.is_continue:
                     path, img, im0s, self.vid_cap = next(dataset)
+                    # jump_count += 1
+                    # if jump_count % 5 != 0:
+                    #     continue
                     count += 1
                     # 每三十帧刷新一次输出帧率
                     if count % 30 == 0 and count >= 30:
