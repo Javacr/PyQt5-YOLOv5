@@ -252,7 +252,7 @@ class MainWindow(QMainWindow, Ui_mainWindow):
             with open(config_file, 'w', encoding='utf-8') as f:
                 f.write(new_json)
         else:
-            config = json.load(open(config_file))
+            config = json.load(open(config_file, 'r', encoding='utf-8'))
             ip = config['ip']
         self.rtsp_window.rtspEdit.setText(ip)
         self.rtsp_window.show()
@@ -332,7 +332,7 @@ class MainWindow(QMainWindow, Ui_mainWindow):
             with open(config_file, 'w', encoding='utf-8') as f:
                 f.write(new_json)
         else:
-            config = json.load(open(config_file))
+            config = json.load(open(config_file, 'r', encoding='utf-8'))
             iou = config['iou']
             conf = config['conf']
             rate = config['rate']
@@ -379,7 +379,8 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         # source = QFileDialog.getOpenFileName(self, '选取视频或图片', os.getcwd(), "Pic File(*.mp4 *.mkv *.avi *.flv "
         #                                                                    "*.jpg *.png)")
         config_file = 'config/fold.json'
-        config = json.load(open(config_file))
+        # config = json.load(open(config_file, 'r', encoding='utf-8'))
+        config = json.load(open(config_file, 'r', encoding='utf-8'))
         open_fold = config['open_fold']
         if not os.path.exists(open_fold):
             open_fold = 'C:\\'
