@@ -306,8 +306,8 @@ class MainWindow(QMainWindow, Ui_mainWindow):
                                             ''')
 
             for cam in cams:
-                action = QAction('%s'%cam)
-                popMenu.addAction(action)
+                exec("action_%s = QAction('%s')" % (cam, cam))
+                exec("popMenu.addAction(action_%s)" % cam)
 
             x = self.groupBox_5.mapToGlobal(self.cameraButton.pos()).x()
             y = self.groupBox_5.mapToGlobal(self.cameraButton.pos()).y()
