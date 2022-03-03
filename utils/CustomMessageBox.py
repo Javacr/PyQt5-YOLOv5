@@ -19,8 +19,7 @@ class MessageBox(QMessageBox):
                                     background: rgb(75, 75, 75);
                                     font-size: 15px;
                                     font-weight: light;
-                                    color:white;
-                                    text-align: center center;}''')
+                                    color:white;}''')
 
         self.setWindowTitle(title)
         self.setIconPixmap(QPixmap(":/img/icon/笑脸.png"))
