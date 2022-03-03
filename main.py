@@ -19,7 +19,7 @@ from utils.CustomMessageBox import MessageBox
 # LoadWebcam 的最后一个返回值改为 self.cap
 from utils.general import check_img_size, check_requirements, check_imshow, colorstr, non_max_suppression, \
     apply_classifier, scale_coords, xyxy2xywh, strip_optimizer, set_logging, increment_path, save_one_box
-from utils.plots import colors, plot_one_box
+from utils.plots import colors, plot_one_box, plot_one_box_PIL
 from utils.torch_utils import select_device, load_classifier, time_sync
 from utils.capnums import Camera
 from dialog.rtsp_win import Window
@@ -169,7 +169,7 @@ class DetThread(QThread):
                                 c = int(cls)  # integer class
                                 statistic_dic[names[c]] += 1
                                 label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
-                                plot_one_box(xyxy, im0, label=label, color=colors(c, True), line_thickness=line_thickness)
+                                im0 = plot_one_box_PIL(xyxy, im0, label=label, color=colors(c, True), line_thickness=line_thickness)
 
                     # 控制视频发送频率
                     if self.rate_check:
