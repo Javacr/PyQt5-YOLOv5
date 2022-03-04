@@ -2,7 +2,7 @@
 本仓库的yolov5版本为**v5.0**，是直接从官方仓库拉取的，支持训练。
 
 本仓库依赖模型有yolov5s.pt、yolov5m.pt、yolov5l.pt、yolov5x.pt,下载地址：https://github.com/ultralytics/yolov5/releases/tag/v5.0
-点击地址后翻到最下面有下载链接，将下载好的模型放在pt文件夹下。
+点击地址后翻到最下面有下载链接，将下载好的模型放在pt文件夹下，运行界面时，会自动检测已有模型。
 
 如果模型下载太慢，可以用百度网盘下载，链接：https://pan.baidu.com/s/1sFFWVyidFZZKi76CsKhf6Q?pwd=6666 
 提取码：6666
