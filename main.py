@@ -208,6 +208,17 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         self.qtimer.setSingleShot(True)
         self.qtimer.timeout.connect(lambda: self.statistic_label.clear())
 
+        # 自动搜索模型
+        self.comboBox.clear()
+        self.pt_list = os.listdir('./pt')
+        self.pt_list = [file for file in self.pt_list if file.endswith('.pt')]
+        self.pt_list.sort(key=lambda x: os.path.getsize('./pt/'+x))
+        self.comboBox.clear()
+        self.comboBox.addItems(self.pt_list)
+        self.qtimer_search = QTimer(self)
+        self.qtimer_search.timeout.connect(lambda: self.search_pt())
+        self.qtimer_search.start(2000)
+
         # yolov5线程
         self.det_thread = DetThread()
         self.model_type = self.comboBox.currentText()
@@ -239,6 +250,16 @@ class MainWindow(QMainWindow, Ui_mainWindow):
 
         self.checkBox.clicked.connect(self.checkrate)
         self.load_setting()
+
+    def search_pt(self):
+        pt_list = os.listdir('./pt')
+        pt_list = [file for file in pt_list if file.endswith('.pt')]
+        pt_list.sort(key=lambda x: os.path.getsize('./pt/' + x))
+
+        if pt_list != self.pt_list:
+            self.pt_list = pt_list
+            self.comboBox.clear()
+            self.comboBox.addItems(self.pt_list)
 
     def checkrate(self):
         if self.checkBox.isChecked():
