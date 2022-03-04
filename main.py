@@ -409,7 +409,7 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         config = json.load(open(config_file, 'r', encoding='utf-8'))
         open_fold = config['open_fold']
         if not os.path.exists(open_fold):
-            open_fold = 'C:\\'
+            open_fold = os.getcwd()
         name, _ = QFileDialog.getOpenFileName(self, '选取视频或图片', open_fold, "Pic File(*.mp4 *.mkv *.avi *.flv "
                                                                           "*.jpg *.png)")
         if name:
