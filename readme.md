@@ -65,4 +65,11 @@ csdn:
 **A:** 买了本《PyQt5快速开发与实战》，书上没有的就查官方文档+CSDN+StackOverflow+github
 <br /><br />
 **Q:** 我将摄像头的默认分辨率640x480修改为1920x1080后，画面就很卡顿，FPS从30变为了7，我在网上也搜了相关的解决办法，有说需要重新编译opencv的，但是我单独用代码调用高分辨率摄像头不会卡顿，不知道是不是opencv的问题，请博主给一些指导。谢谢（修改帧率也试过了没用）<br />
-**A:** 为了快速启动摄像头，代码中opencv是使用direct show模式打开摄像头的，这种模式下摄像头捕获分辨率调高之后，帧率会下降。改一下datasets.py中LoadWebcam类，大概242行，把括号中“, cv2.CAP_DSHOW”删除，括号里就留一个“eval(pipe)”就行了。但是启动摄像头需要的时间会比之前长一些。
+**A:** 为了快速启动摄像头，代码中opencv是使用direct show模式打开摄像头的，这种模式下摄像头捕获分辨率调高之后，帧率会下降。改一下datasets.py中LoadWebcam类，大概242行，把括号中“, cv2.CAP_DSHOW”删除，括号里就留一个“eval(pipe)”就行了。但是启动摄像头需要的时间会比之前长一些。或者，依旧使用direct show模式，将244行的`self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 3)`替换为以下代码
+```python
+        self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+        self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+        self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 3)  # set buffer size
+        self.cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'))
+```
+
