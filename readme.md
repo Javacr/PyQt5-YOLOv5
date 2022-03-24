@@ -45,8 +45,20 @@ csdn:
 
 
 **使用：**
-
-将下载好的模型放在pt文件夹下，运行*main.py*开启检测界面后**会自动检测已有模型**。ui文件也已上传，可以按照自己的想法更改ui界面。
+```bash
+# conda创建python虚拟环境
+conda create -n yolov5_pyqt5 python=3.8
+# 激活环境
+conda activate yolov5_pyqt5
+# 到项目根目录下
+cd ./
+# 安装依赖文件
+pip install -r requirements.txt
+# 将下载好的模型放在pt文件夹下
+# 运行main.py
+python main.py
+```
+运行*main.py*开启检测界面后**会自动检测已有模型**。ui文件也已上传，可以按照自己的想法更改ui界面。
 
 **使用过程中如果遇到问题，欢迎issue**
 
