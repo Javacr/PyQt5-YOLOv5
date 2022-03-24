@@ -7,8 +7,8 @@ opencv-python>=4.1.2
 Pillow
 PyYAML>=5.3.1
 scipy>=1.4.1
-torch==1.9.0
-torchvision==0.10.0
+torch==1.7.1
+torchvision==0.8.2
 tqdm>=4.41.0
 pyqt5
 pyqt5-tools
