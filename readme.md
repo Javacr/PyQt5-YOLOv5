@@ -67,6 +67,9 @@ python main.py
 **Q:** 把模型替换为yolov5最新版本的模型后，界面左下角有错误提示，但是没有报错，请问怎么解决？<br />
 **A:** 5.0之后的版本会报错"The size of tensor a (80) must match the size the size of tensor b(52) at non-singleton dimension 3"或者"AttributeError: Can't get attribute 'SPPF' on <module 'models.common' from 'D:\\Yolo_detect\\pyqt+yolo\\PyQt5-YOLOv5-master\\models\\common.py'>"。模型版本不同则无法直接使用，建议用本仓库训练，或者修改代码以匹配你的模型。如果你想看详细错误报告，可以把DetThread类中的异常捕获取消，或者调用cgit模块（自行搜索cgit的用法，很简单）。
 <br /><br />
+**Q:** 遇到错误：Permission denied：'pt'<br />
+**A:** pt文件在下载时有损坏，重新下载。
+<br /><br />
 **Q:** 如何打包成exe文件？<br />
 **A:** 打包过一次，但是启动后打不开，打包的文件1G左右，不建议打包。如果有人打包成功了，可以留个言。如果你只是不想使用命令行启动文件，windows用户可以建一个bat文件快速启动。
 <br /><br />
