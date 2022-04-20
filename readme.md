@@ -1,4 +1,4 @@
-### 友情提示：由于官方给出的yolov5版本会持续更新。为了避免不兼容的问题，建议使用本仓库的yolov5。如果想兼容最新版本的yolov5，自行更改对应的代码即可，改动不大。
+### 友情提示：由于官方给出的yolov5版本会持续更新。为了避免不兼容的问题，建议使用本仓库的yolov5。如果想兼容最新版本的yolov5，自行更改对应的代码即可。
 本仓库的yolov5版本为**v5.0**，是直接从官方仓库拉取的，支持训练。
 
 本仓库依赖模型有yolov5s.pt、yolov5m.pt、yolov5l.pt、yolov5x.pt,下载地址：https://github.com/ultralytics/yolov5/releases/tag/v5.0
@@ -11,15 +11,15 @@
 
 **界面**
 
-![界面](https://github.com/Javacr/PyQt5-YOLOv5/blob/v3.0/imgs/%E7%95%8C%E9%9D%A2.jpg)
+![界面](https://github.com/Javacr/PyQt5-YOLOv5/blob/master/imgs/%E7%95%8C%E9%9D%A2.jpg)
 
 **本地图片检测画面：**
 
-![本地图片](https://github.com/Javacr/PyQt5-YOLOv5/blob/v3.0/imgs/%E5%9B%BE%E7%89%87.png)
+![本地图片](https://github.com/Javacr/PyQt5-YOLOv5/blob/master/imgs/%E5%9B%BE%E7%89%87.png)
 
 **本地视频检测画面：**
 
-![本地视频](https://github.com/Javacr/PyQt5-YOLOv5/blob/v3.0/imgs/%E8%A7%86%E9%A2%91.png)
+![本地视频](https://github.com/Javacr/PyQt5-YOLOv5/blob/master/imgs/%E8%A7%86%E9%A2%91.png)
 
 演示视频：
 [https://www.bilibili.com/video/BV1sQ4y1C7Vk?spm_id_from=333.999.0.0](https://www.bilibili.com/video/BV1sQ4y1C7Vk?spm_id_from=333.999.0.0)
@@ -65,7 +65,10 @@ python main.py
 **问题汇总**
 
 **Q:** 把模型替换为yolov5最新版本的模型后，界面左下角有错误提示，但是没有报错，请问怎么解决？<br />
-**A:** 最新版本的界面，用最新的yolov5模型不会报错或者闪退，这是因为加了异常捕获，避免闪退。如果你想看详细错误报告，可以把DetThread类中的异常捕获取消，或者调用cgit模块（自行搜索cgit的用法，很简单）。
+**A:** 5.0之后的版本会报错"The size of tensor a (80) must match the size the size of tensor b(52) at non-singleton dimension 3"或者"AttributeError: Can't get attribute 'SPPF' on <module 'models.common' from 'D:\\Yolo_detect\\pyqt+yolo\\PyQt5-YOLOv5-master\\models\\common.py'>"。模型版本不同则无法直接使用，建议用本仓库训练，或者修改代码以匹配你的模型。如果你想看详细错误报告，可以把DetThread类中的异常捕获取消，或者调用cgit模块（自行搜索cgit的用法，很简单）。
+<br /><br />
+**Q:** 如何打包成exe文件？<br />
+**A:** 打包过一次，但是启动后打不开，打包的文件1G左右，不建议打包。如果有人打包成功了，可以留个言。如果你只是不想使用命令行启动文件，windows用户可以建一个bat文件快速启动。
 <br /><br />
 **Q:** 点击摄像头按钮后，再检测，为什么还是检测上一次的文件？<br />
 **A:** 点击摄像头按钮后，会自动检测电脑连接了几个摄像头（除了电脑自带摄像头，有些人还会连接usb摄像头），检测完成后，摄像头按钮下方会出现数字序号，你需要手动点击出现的数字选择摄像头。
