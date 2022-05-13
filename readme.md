@@ -68,7 +68,7 @@ python main.py
 **A:** 使用v5.0之后的版本会报错"The size of tensor a (80) must match the size the size of tensor b(52) at non-singleton dimension 3"或者"AttributeError: Can't get attribute 'SPPF' on <module 'models.common' from 'D:\\Yolo_detect\\pyqt+yolo\\PyQt5-YOLOv5-master\\models\\common.py'>"。模型版本不同则无法直接使用，建议用本仓库训练，或者修改代码以匹配你的模型。如果你想看详细错误报告，可以把DetThread类中的异常捕获取消，或者调用cgit模块（自行搜索cgit的用法，很简单）。
 <br /><br />
 **Q:** 遇到错误：Permission denied：'pt'<br />
-**A:** pt文件在下载时有损坏，重新下载。
+**A:** 可能是pt文件在下载时有损坏，重新下载，或者是没有将pt文件放到pt文件夹中。
 <br /><br />
 **Q:** ‘Upsample’ object has no attribute 'recompute_scale_factor'<br />
 **A:** torch版本太高，下降一下版本吧，我的是torch=1.7.1、torchvision=0.8.2。torch==1.9.0、torchvision==0.10.0也可以。
