@@ -46,6 +46,7 @@ class DetThread(QThread):
         self.percent_length = 1000              # 进度条
         self.rate_check = True                  # 是否启用延时
         self.rate = 100                         # 延时HZ
+        self.save_fold = './result'             # 保存文件夹
 
     @torch.no_grad()
     def run(self,
@@ -104,12 +105,15 @@ class DetThread(QThread):
             jump_count = 0
             start_time = time.time()
             dataset = iter(dataset)
+
             while True:
                 # 手动停止
                 if self.jump_out:
                     self.vid_cap.release()
                     self.send_percent.emit(0)
                     self.send_msg.emit('停止')
+                    if hasattr(self, 'out'):
+                        self.out.release()
                     break
                 # 临时更换模型
                 if self.current_weight != self.weights:
@@ -176,13 +180,29 @@ class DetThread(QThread):
                     # 控制视频发送频率
                     if self.rate_check:
                         time.sleep(1/self.rate)
-                    # print(type(im0s))
                     self.send_img.emit(im0)
                     self.send_raw.emit(im0s if isinstance(im0s, np.ndarray) else im0s[0])
                     self.send_statistic.emit(statistic_dic)
+                    # 如果自动录制
+                    if self.save_fold:
+                        os.makedirs(self.save_fold, exist_ok=True)  # 路径不存在，自动保存
+                        if count == 1:  # 第一帧时初始化录制
+                            # 以视频原始帧率进行录制
+                            ori_fps = int(self.vid_cap.get(cv2.CAP_PROP_FPS))
+                            if ori_fps == 0:
+                                ori_fps = 25
+                            # width = int(self.vid_cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+                            # height = int(self.vid_cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+                            width, height = im0.shape[1], im0.shape[0]
+                            save_path = os.path.join(self.save_fold, time.strftime('%Y_%m_%d_%H_%M_%S', time.localtime()) + '.mp4')
+                            self.out = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*"mp4v"), ori_fps,
+                                                       (width, height))
+                        self.out.write(im0)
                     if percent == self.percent_length:
                         self.send_percent.emit(0)
                         self.send_msg.emit('检测结束')
+                        if hasattr(self, 'out'):
+                            self.out.release()
                         # 正常跳出循环
                         break
 
@@ -196,9 +216,9 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         self.setupUi(self)
         self.m_flag = False
         # win10的CustomizeWindowHint模式，边框上面有一段空白。
-        # 不想看到空白可以用FramelessWindowHint模式，但是需要重写鼠标事件才能通过鼠标拉伸窗口，比较麻烦
+        # 不想看到顶部空白可以用FramelessWindowHint模式，但是需要重写鼠标事件才能通过鼠标拉伸窗口，比较麻烦
         # 不嫌麻烦可以试试, 写了一半不想写了，累死人
-        self.setWindowFlags(Qt.CustomizeWindowHint)
+        self.setWindowFlags(Qt.CustomizeWindowHint | Qt.WindowStaysOnTopHint )
         # self.setWindowFlags(Qt.FramelessWindowHint)
         # 自定义标题栏按钮
         self.minButton.clicked.connect(self.showMinimized)
@@ -251,6 +271,7 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         self.rateSlider.valueChanged.connect(lambda x: self.change_val(x, 'rateSlider'))
 
         self.checkBox.clicked.connect(self.checkrate)
+        self.saveCheckBox.clicked.connect(self.is_save)
         self.load_setting()
 
     def search_pt(self):
@@ -262,6 +283,13 @@ class MainWindow(QMainWindow, Ui_mainWindow):
             self.pt_list = pt_list
             self.comboBox.clear()
             self.comboBox.addItems(self.pt_list)
+
+    def is_save(self):
+        if self.saveCheckBox.isChecked():
+            # 选中时
+            self.det_thread.save_fold = './result'
+        else:
+            self.det_thread.save_fold = None
 
     def checkrate(self):
         if self.checkBox.isChecked():
@@ -351,25 +379,37 @@ class MainWindow(QMainWindow, Ui_mainWindow):
             conf = 0.33
             rate = 10
             check = 0
-            new_config = {"iou": 0.26,
-                          "conf": 0.33,
-                          "rate": 10,
-                          "check": 0
+            savecheck = 0
+            new_config = {"iou": iou,
+                          "conf": conf,
+                          "rate": rate,
+                          "check": check,
+                          "savecheck": savecheck
                           }
             new_json = json.dumps(new_config, ensure_ascii=False, indent=2)
             with open(config_file, 'w', encoding='utf-8') as f:
                 f.write(new_json)
         else:
             config = json.load(open(config_file, 'r', encoding='utf-8'))
-            iou = config['iou']
-            conf = config['conf']
-            rate = config['rate']
-            check = config['check']
+            if len(config) != 5:
+                iou = 0.26
+                conf = 0.33
+                rate = 10
+                check = 0
+                savecheck = 0
+            else:
+                iou = config['iou']
+                conf = config['conf']
+                rate = config['rate']
+                check = config['check']
+                savecheck = config['savecheck']
         self.confSpinBox.setValue(iou)
         self.iouSpinBox.setValue(conf)
         self.rateSpinBox.setValue(rate)
         self.checkBox.setCheckState(check)
-        self.det_thread.rate_check = check
+        self.det_thread.rate_check = check          # 是否启用延时
+        self.saveCheckBox.setCheckState(savecheck)
+        self.is_save()                              # 是否自动保存
 
     def change_val(self, x, flag):
         if flag == 'confSpinBox':
@@ -397,6 +437,8 @@ class MainWindow(QMainWindow, Ui_mainWindow):
     def show_msg(self, msg):
         self.runButton.setChecked(Qt.Unchecked)
         self.statistic_msg(msg)
+        if msg == "检测结束":
+            self.saveCheckBox.setEnabled(True)
 
     def change_model(self, x):
         self.model_type = self.comboBox.currentText()
@@ -434,6 +476,7 @@ class MainWindow(QMainWindow, Ui_mainWindow):
     def run_or_continue(self):
         self.det_thread.jump_out = False
         if self.runButton.isChecked():
+            self.saveCheckBox.setEnabled(False)
             self.det_thread.is_continue = True
             if not self.det_thread.isRunning():
                 self.det_thread.start()
@@ -449,6 +492,7 @@ class MainWindow(QMainWindow, Ui_mainWindow):
     # 退出检测循环
     def stop(self):
         self.det_thread.jump_out = True
+        self.saveCheckBox.setEnabled(True)
 
     def mousePressEvent(self, event):
         self.m_Position = event.pos()
@@ -516,6 +560,7 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         config['conf'] = self.iouSpinBox.value()
         config['rate'] = self.rateSpinBox.value()
         config['check'] = self.checkBox.checkState()
+        config['savecheck'] = self.saveCheckBox.checkState()
         config_json = json.dumps(config, ensure_ascii=False, indent=2)
         with open(config_file, 'w', encoding='utf-8') as f:
             f.write(config_json)
