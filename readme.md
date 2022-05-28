@@ -15,7 +15,7 @@
 
 **运行效果：**
 
-![运行效果](https://github.com/Javacr/PyQt5-YOLOv5/blob/master/imgs/%E8%BF%90%E8%A1%8C%E6%95%88%E6%9E%9C.png)
+![运行效果](https://github.com/Javacr/PyQt5-YOLOv5/blob/master/imgs/%E8%BF%90%E8%A1%8C.png)
 
 演示视频：
 [https://www.bilibili.com/video/BV1sQ4y1C7Vk?spm_id_from=333.999.0.0](https://www.bilibili.com/video/BV1sQ4y1C7Vk?spm_id_from=333.999.0.0)
