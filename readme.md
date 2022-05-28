@@ -7,19 +7,15 @@
 如果模型下载太慢，可以用百度网盘下载，链接：https://pan.baidu.com/s/1sFFWVyidFZZKi76CsKhf6Q?pwd=6666 
 提取码：6666
 
-### 更新日期：2022/3/4
+### 更新日期：2022/5/29
 
 **界面**
 
-![界面](https://github.com/Javacr/PyQt5-YOLOv5/blob/master/imgs/%E7%95%8C%E9%9D%A2.jpg)
+![界面](https://github.com/Javacr/PyQt5-YOLOv5/blob/master/imgs/%E7%95%8C%E9%9D%A2.png)
 
-**本地图片检测画面：**
+**运行效果：**
 
-![本地图片](https://github.com/Javacr/PyQt5-YOLOv5/blob/master/imgs/%E5%9B%BE%E7%89%87.png)
-
-**本地视频检测画面：**
-
-![本地视频](https://github.com/Javacr/PyQt5-YOLOv5/blob/master/imgs/%E8%A7%86%E9%A2%91.png)
+![运行效果](https://github.com/Javacr/PyQt5-YOLOv5/blob/master/imgs/%E8%BF%90%E8%A1%8C%E6%95%88%E6%9E%9C.png)
 
 演示视频：
 [https://www.bilibili.com/video/BV1sQ4y1C7Vk?spm_id_from=333.999.0.0](https://www.bilibili.com/video/BV1sQ4y1C7Vk?spm_id_from=333.999.0.0)
@@ -42,6 +38,7 @@ csdn:
 5. 帧间延时调整
 6. 播放/暂停/结束
 7. 统计检测结果（显示边框时，支持中文标签）
+8. 加入检测后自动保存功能
 
 
 **使用：**
