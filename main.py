@@ -186,19 +186,27 @@ class DetThread(QThread):
                     # 如果自动录制
                     if self.save_fold:
                         os.makedirs(self.save_fold, exist_ok=True)  # 路径不存在，自动保存
-                        if count == 1:  # 第一帧时初始化录制
-                            # 以视频原始帧率进行录制
-                            ori_fps = int(self.vid_cap.get(cv2.CAP_PROP_FPS))
-                            if ori_fps == 0:
-                                ori_fps = 25
-                            # width = int(self.vid_cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-                            # height = int(self.vid_cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-                            width, height = im0.shape[1], im0.shape[0]
-                            save_path = os.path.join(self.save_fold, time.strftime('%Y_%m_%d_%H_%M_%S', time.localtime()) + '.mp4')
-                            self.out = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*"mp4v"), ori_fps,
-                                                       (width, height))
-                        self.out.write(im0)
+                        # 如果输入是图片
+                        if self.vid_cap is None:
+                            save_path = os.path.join(self.save_fold,
+                                                     time.strftime('%Y_%m_%d_%H_%M_%S',
+                                                                   time.localtime()) + '.jpg')
+                            cv2.imwrite(save_path, im0)
+                        else:
+                            if count == 1:  # 第一帧时初始化录制
+                                # 以视频原始帧率进行录制
+                                ori_fps = int(self.vid_cap.get(cv2.CAP_PROP_FPS))
+                                if ori_fps == 0:
+                                    ori_fps = 25
+                                # width = int(self.vid_cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+                                # height = int(self.vid_cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+                                width, height = im0.shape[1], im0.shape[0]
+                                save_path = os.path.join(self.save_fold, time.strftime('%Y_%m_%d_%H_%M_%S', time.localtime()) + '.mp4')
+                                self.out = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*"mp4v"), ori_fps,
+                                                           (width, height))
+                            self.out.write(im0)
                     if percent == self.percent_length:
+                        print(count)
                         self.send_percent.emit(0)
                         self.send_msg.emit('检测结束')
                         if hasattr(self, 'out'):
@@ -208,6 +216,7 @@ class DetThread(QThread):
 
         except Exception as e:
             self.send_msg.emit('%s' % e)
+
 
 
 class MainWindow(QMainWindow, Ui_mainWindow):
