@@ -423,6 +423,9 @@ color: rgb(218, 218, 218);
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <property name="rightMargin">
+               <number>7</number>
+              </property>
               <item>
                <widget class="QLabel" name="label_3">
                 <property name="minimumSize">
@@ -1244,6 +1247,40 @@ QSlider::sub-page:horizontal{
                </layout>
               </item>
              </layout>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="saveCheckBox">
+              <property name="styleSheet">
+               <string notr="true">
+QCheckBox
+{font-size: 16px;
+	font-family: &quot;Microsoft YaHei&quot;;
+	font-weight: bold;
+ 		border-radius:9px;
+		background:rgba(66, 195, 255, 0);
+color: rgb(218, 218, 218);;}
+
+QCheckBox::indicator {
+	width: 20px;
+	height: 20px;
+}
+QCheckBox::indicator:unchecked {
+    image: url(:/img/icon/button-off.png);
+}
+
+QCheckBox::indicator:checked {
+    
+    image: url(:/img/icon/button-on.png);
+}
+</string>
+              </property>
+              <property name="text">
+               <string>自动保存</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
             </item>
             <item>
              <layout class="QVBoxLayout" name="verticalLayout_7">

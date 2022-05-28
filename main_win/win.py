@@ -199,6 +199,7 @@ class Ui_mainWindow(object):
         self.horizontalLayout_35.addItem(spacerItem1)
         self.verticalLayout_8.addWidget(self.groupBox_2)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setContentsMargins(-1, -1, 7, -1)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.label_3 = QtWidgets.QLabel(self.groupBox_8)
         self.label_3.setMinimumSize(QtCore.QSize(0, 35))
@@ -745,6 +746,32 @@ class Ui_mainWindow(object):
         self.horizontalLayout_13.addWidget(self.rateSlider)
         self.verticalLayout_5.addLayout(self.horizontalLayout_13)
         self.verticalLayout_8.addLayout(self.verticalLayout_5)
+        self.saveCheckBox = QtWidgets.QCheckBox(self.groupBox_8)
+        self.saveCheckBox.setStyleSheet("\n"
+"QCheckBox\n"
+"{font-size: 16px;\n"
+"    font-family: \"Microsoft YaHei\";\n"
+"    font-weight: bold;\n"
+"         border-radius:9px;\n"
+"        background:rgba(66, 195, 255, 0);\n"
+"color: rgb(218, 218, 218);;}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 20px;\n"
+"    height: 20px;\n"
+"}\n"
+"QCheckBox::indicator:unchecked {\n"
+"    image: url(:/img/icon/button-off.png);\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    \n"
+"    image: url(:/img/icon/button-on.png);\n"
+"}\n"
+"")
+        self.saveCheckBox.setChecked(True)
+        self.saveCheckBox.setObjectName("saveCheckBox")
+        self.verticalLayout_8.addWidget(self.saveCheckBox)
         self.verticalLayout_7 = QtWidgets.QVBoxLayout()
         self.verticalLayout_7.setObjectName("verticalLayout_7")
         self.label_11 = QtWidgets.QLabel(self.groupBox_8)
@@ -1012,6 +1039,7 @@ class Ui_mainWindow(object):
         self.label.setText(_translate("mainWindow", "置信度"))
         self.label_8.setText(_translate("mainWindow", "帧间延时"))
         self.checkBox.setText(_translate("mainWindow", "启用"))
+        self.saveCheckBox.setText(_translate("mainWindow", "自动保存"))
         self.label_11.setText(_translate("mainWindow", "结果统计"))
         self.label_6.setText(_translate("mainWindow", "视频"))
         self.label_28.setText(_translate("mainWindow", "video"))
