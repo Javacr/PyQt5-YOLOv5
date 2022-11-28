@@ -175,9 +175,6 @@ class DetThread(QThread):
                                 c = int(cls)  # integer class
                                 statistic_dic[names[c]] += 1
                                 label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
-                                # im0 = plot_one_box_PIL(xyxy, im0, label=label, color=colors(c, True), line_thickness=line_thickness)  # 中文标签画框，但是耗时会增加
-                                # plot_one_box(xyxy, im0, label=label, color=colors(c, True),
-                                #              line_thickness=line_thickness)
                                 annotator.box_label(xyxy, label, color=colors(c, True))
 
                     # 控制视频发送频率
