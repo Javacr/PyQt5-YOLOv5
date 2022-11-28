@@ -18,9 +18,11 @@ from utils.datasets import LoadImages, LoadWebcam
 from utils.CustomMessageBox import MessageBox
 # LoadWebcam 的最后一个返回值改为 self.cap
 from utils.general import check_img_size, check_requirements, check_imshow, colorstr, non_max_suppression, \
-    apply_classifier, scale_coords, xyxy2xywh, strip_optimizer, set_logging, increment_path, save_one_box
-from utils.plots import colors, plot_one_box, plot_one_box_PIL
-from utils.torch_utils import select_device, load_classifier, time_sync
+    apply_classifier, scale_coords, xyxy2xywh, strip_optimizer, set_logging, increment_path
+# from utils.plots import colors, plot_one_box, plot_one_box_PIL
+from utils.plots import Annotator, colors, save_one_box
+
+from utils.torch_utils import select_device
 from utils.capnums import Camera
 from dialog.rtsp_win import Window
 
@@ -163,7 +165,7 @@ class DetThread(QThread):
                     # Process detections
                     for i, det in enumerate(pred):  # detections per image
                         im0 = im0s.copy()
-
+                        annotator = Annotator(im0, line_width=line_thickness, example=str(names))
                         if len(det):
                             # Rescale boxes from img_size to im0 size
                             det[:, :4] = scale_coords(img.shape[2:], det[:, :4], im0.shape).round()
@@ -174,12 +176,14 @@ class DetThread(QThread):
                                 statistic_dic[names[c]] += 1
                                 label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
                                 # im0 = plot_one_box_PIL(xyxy, im0, label=label, color=colors(c, True), line_thickness=line_thickness)  # 中文标签画框，但是耗时会增加
-                                plot_one_box(xyxy, im0, label=label, color=colors(c, True),
-                                             line_thickness=line_thickness)
+                                # plot_one_box(xyxy, im0, label=label, color=colors(c, True),
+                                #              line_thickness=line_thickness)
+                                annotator.box_label(xyxy, label, color=colors(c, True))
 
                     # 控制视频发送频率
                     if self.rate_check:
                         time.sleep(1/self.rate)
+                    im0 = annotator.result()
                     self.send_img.emit(im0)
                     self.send_raw.emit(im0s if isinstance(im0s, np.ndarray) else im0s[0])
                     self.send_statistic.emit(statistic_dic)
