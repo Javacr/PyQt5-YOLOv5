@@ -560,7 +560,7 @@ border-radius:0px;}</string>
                       </size>
                      </property>
                      <property name="toolTip">
-                      <string>文件</string>
+                      <string>file</string>
                      </property>
                      <property name="styleSheet">
                       <string notr="true">QPushButton{font-family: &quot;Microsoft YaHei&quot;;
@@ -639,7 +639,7 @@ background-color: rgba(48,148,243,80);}</string>
                       </size>
                      </property>
                      <property name="toolTip">
-                      <string>相机</string>
+                      <string>camera</string>
                      </property>
                      <property name="styleSheet">
                       <string notr="true">QPushButton{font-family: &quot;Microsoft YaHei&quot;;
