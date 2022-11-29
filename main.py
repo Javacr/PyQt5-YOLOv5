@@ -110,7 +110,7 @@ class DetThread(QThread):
                 if self.jump_out:
                     self.vid_cap.release()
                     self.send_percent.emit(0)
-                    self.send_msg.emit('停止')
+                    self.send_msg.emit('Stop')
                     if hasattr(self, 'out'):
                         self.out.release()
                     break
@@ -474,7 +474,7 @@ class MainWindow(QMainWindow, Ui_mainWindow):
                                       source))
         else:
             self.det_thread.is_continue = False
-            self.statistic_msg('pause')
+            self.statistic_msg('Pause')
 
     def stop(self):
         self.det_thread.jump_out = True
