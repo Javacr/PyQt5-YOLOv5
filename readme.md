@@ -11,6 +11,8 @@ Other versions: [v5.0](https://github.com/Javacr/PyQt5-YOLOv5/tree/yolov5_v5.0),
 
 ![RUNNING](./imgs/Running.png)
 
+![singwin](./imgs/SingleWin.png)
+
 ### Demo Video：
 [https://www.bilibili.com/video/BV1sQ4y1C7Vk?spm_id_from=333.999.0.0](https://www.bilibili.com/video/BV1sQ4y1C7Vk?spm_id_from=333.999.0.0)
 
