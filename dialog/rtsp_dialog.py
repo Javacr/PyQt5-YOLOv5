@@ -85,6 +85,6 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
-        self.label.setText(_translate("Form", "输入rtsp地址:"))
-        self.rtspButton.setText(_translate("Form", "确认"))
+        self.label.setText(_translate("Form", "rtsp address:"))
+        self.rtspButton.setText(_translate("Form", "confirm"))
 import apprcc_rc

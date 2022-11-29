@@ -140,7 +140,7 @@ color: rgb(218, 218, 218);
 </string>
             </property>
             <property name="text">
-             <string>YOLOv5检测界面</string>
+             <string>YOLOv5 GUI</string>
             </property>
            </widget>
           </item>
@@ -376,31 +376,6 @@ color: rgb(218, 218, 218);
 </string>
                  </property>
                  <property name="text">
-                  <string>设置</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_27">
-                 <property name="minimumSize">
-                  <size>
-                   <width>0</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>16777215</width>
-                   <height>40</height>
-                  </size>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QLabel{
-	font-family: &quot;DejaVu Sans Mono&quot;;
-	font-size: 15px;
-	color: #e8e8e8;}</string>
-                 </property>
-                 <property name="text">
                   <string>setting</string>
                  </property>
                 </widget>
@@ -453,7 +428,7 @@ color: rgb(218, 218, 218);
 </string>
                 </property>
                 <property name="text">
-                 <string>模型选择</string>
+                 <string>model</string>
                 </property>
                </widget>
               </item>
@@ -538,7 +513,7 @@ color: rgb(218, 218, 218);
 </string>
                 </property>
                 <property name="text">
-                 <string>输入选择</string>
+                 <string>input</string>
                 </property>
                </widget>
               </item>
@@ -956,7 +931,7 @@ color: rgb(218, 218, 218);
 </string>
                 </property>
                 <property name="text">
-                 <string>置信度</string>
+                 <string>conf</string>
                 </property>
                </widget>
               </item>
@@ -1092,7 +1067,7 @@ color: rgb(218, 218, 218);
 </string>
                   </property>
                   <property name="text">
-                   <string>帧间延时</string>
+                   <string>latency</string>
                   </property>
                  </widget>
                 </item>
@@ -1123,7 +1098,7 @@ QCheckBox::indicator:checked {
 </string>
                   </property>
                   <property name="text">
-                   <string>启用</string>
+                   <string>enable</string>
                   </property>
                   <property name="checked">
                    <bool>true</bool>
@@ -1275,7 +1250,7 @@ QCheckBox::indicator:checked {
 </string>
               </property>
               <property name="text">
-               <string>自动保存</string>
+               <string>save automatically</string>
               </property>
               <property name="checked">
                <bool>true</bool>
@@ -1299,7 +1274,7 @@ color: rgb(218, 218, 218);
 </string>
                 </property>
                 <property name="text">
-                 <string>结果统计</string>
+                 <string>result statistics</string>
                 </property>
                </widget>
               </item>
@@ -1404,31 +1379,6 @@ border-radius:0px;}</string>
 color: rgb(218, 218, 218);
 }
 </string>
-                 </property>
-                 <property name="text">
-                  <string>视频</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_28">
-                 <property name="minimumSize">
-                  <size>
-                   <width>0</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>16777215</width>
-                   <height>40</height>
-                  </size>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QLabel{
-	font-family: &quot;DejaVu Sans Mono&quot;;
-	font-size: 15px;
-	color: #e1e1e1;}</string>
                  </property>
                  <property name="text">
                   <string>video</string>

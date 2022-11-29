@@ -186,15 +186,6 @@ class Ui_mainWindow(object):
 "")
         self.label_5.setObjectName("label_5")
         self.horizontalLayout_35.addWidget(self.label_5)
-        self.label_27 = QtWidgets.QLabel(self.groupBox_2)
-        self.label_27.setMinimumSize(QtCore.QSize(0, 0))
-        self.label_27.setMaximumSize(QtCore.QSize(16777215, 40))
-        self.label_27.setStyleSheet("QLabel{\n"
-"    font-family: \"DejaVu Sans Mono\";\n"
-"    font-size: 15px;\n"
-"    color: #e8e8e8;}")
-        self.label_27.setObjectName("label_27")
-        self.horizontalLayout_35.addWidget(self.label_27)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_35.addItem(spacerItem1)
         self.verticalLayout_8.addWidget(self.groupBox_2)
@@ -840,15 +831,6 @@ class Ui_mainWindow(object):
 "")
         self.label_6.setObjectName("label_6")
         self.horizontalLayout_6.addWidget(self.label_6)
-        self.label_28 = QtWidgets.QLabel(self.groupBox_3)
-        self.label_28.setMinimumSize(QtCore.QSize(0, 0))
-        self.label_28.setMaximumSize(QtCore.QSize(16777215, 40))
-        self.label_28.setStyleSheet("QLabel{\n"
-"    font-family: \"DejaVu Sans Mono\";\n"
-"    font-size: 15px;\n"
-"    color: #e1e1e1;}")
-        self.label_28.setObjectName("label_28")
-        self.horizontalLayout_6.addWidget(self.label_28)
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_6.addItem(spacerItem2)
         self.fps_label = QtWidgets.QLabel(self.groupBox_3)
@@ -1023,25 +1005,23 @@ class Ui_mainWindow(object):
     def retranslateUi(self, mainWindow):
         _translate = QtCore.QCoreApplication.translate
         mainWindow.setWindowTitle(_translate("mainWindow", "YOLOv5检测界面"))
-        self.label_4.setText(_translate("mainWindow", "YOLOv5检测界面"))
-        self.label_5.setText(_translate("mainWindow", "设置"))
-        self.label_27.setText(_translate("mainWindow", "setting"))
-        self.label_3.setText(_translate("mainWindow", "模型选择"))
+        self.label_4.setText(_translate("mainWindow", "YOLOv5 GUI"))
+        self.label_5.setText(_translate("mainWindow", "setting"))
+        self.label_3.setText(_translate("mainWindow", "model"))
         self.comboBox.setItemText(0, _translate("mainWindow", "yolov5s.pt"))
         self.comboBox.setItemText(1, _translate("mainWindow", "yolov5m.pt"))
         self.comboBox.setItemText(2, _translate("mainWindow", "yolov5l.pt"))
         self.comboBox.setItemText(3, _translate("mainWindow", "yolov5x.pt"))
-        self.label_10.setText(_translate("mainWindow", "输入选择"))
+        self.label_10.setText(_translate("mainWindow", "input"))
         self.fileButton.setToolTip(_translate("mainWindow", "文件"))
         self.cameraButton.setToolTip(_translate("mainWindow", "相机"))
         self.rtspButton.setToolTip(_translate("mainWindow", "rtsp"))
         self.label_2.setText(_translate("mainWindow", "IoU"))
-        self.label.setText(_translate("mainWindow", "置信度"))
-        self.label_8.setText(_translate("mainWindow", "帧间延时"))
-        self.checkBox.setText(_translate("mainWindow", "启用"))
-        self.saveCheckBox.setText(_translate("mainWindow", "自动保存"))
-        self.label_11.setText(_translate("mainWindow", "结果统计"))
-        self.label_6.setText(_translate("mainWindow", "视频"))
-        self.label_28.setText(_translate("mainWindow", "video"))
+        self.label.setText(_translate("mainWindow", "conf"))
+        self.label_8.setText(_translate("mainWindow", "latency"))
+        self.checkBox.setText(_translate("mainWindow", "enable"))
+        self.saveCheckBox.setText(_translate("mainWindow", "save automatically"))
+        self.label_11.setText(_translate("mainWindow", "result statistics"))
+        self.label_6.setText(_translate("mainWindow", "video"))
 from MouseLabel import Label_click_Mouse
 import apprcc_rc
