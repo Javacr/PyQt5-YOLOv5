@@ -215,10 +215,19 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
         self.m_flag = False
-        self.setWindowFlags(Qt.CustomizeWindowHint | Qt.WindowStaysOnTopHint )
+
+        # style 1: window can be stretched
+        # self.setWindowFlags(Qt.CustomizeWindowHint | Qt.WindowStaysOnTopHint)
+
+        # style 2: window can not be stretched
+        self.setWindowFlags(Qt.Window | Qt.FramelessWindowHint
+                            | Qt.WindowSystemMenuHint | Qt.WindowMinimizeButtonHint | Qt.WindowMaximizeButtonHint)
+        # self.setWindowOpacity(0.85)  # Transparency of window
 
         self.minButton.clicked.connect(self.showMinimized)
         self.maxButton.clicked.connect(self.max_or_restore)
+        # show Maximized window
+        self.maxButton.animateClick(10)
         self.closeButton.clicked.connect(self.close)
 
         self.qtimer = QTimer(self)
@@ -552,4 +561,5 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     myWin = MainWindow()
     myWin.show()
+    # myWin.showMaximized()
     sys.exit(app.exec_())
