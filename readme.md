@@ -6,8 +6,8 @@ Download the models of  YOLOv5 v6.1 from [here](https://github.com/ultralytics/y
 
 Other versions: [v5.0](https://github.com/Javacr/PyQt5-YOLOv5/tree/yolov5_v5.0), ...
 
-### Updated Date：2022/11/29
-![GUI](./imgs/GUI.png)
+### Updated Date：2022/12/4
+![GUI](./imgs/GUI_new.png)
 
 ![RUNNING](./imgs/Running.png)
 
@@ -24,6 +24,17 @@ conda activate yolov5_pyqt5
 pip install -r requirements.txt
 python main.py
 ```
-You can find ui files in [main_win](./main_win) and [./dialog](dialog)
+### Function
+
+1. support image/video/webcam/rtsp as input
+2. change model
+3. change IoU
+4. change confidence
+5. set latency
+6. paly/pause/stop
+7. result statistics
+8. save  detected image/video automatically
+
+You can find ui files in [main_win](./main_win) and [dialog](dialog)
 
 
