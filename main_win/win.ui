@@ -309,9 +309,21 @@ border-radius:0px;}
            <property name="title">
             <string/>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout_8">
+           <layout class="QVBoxLayout" name="verticalLayout_8" stretch="0,0,0,0,0,0,0,0">
             <property name="spacing">
              <number>11</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
             </property>
             <item>
              <widget class="QGroupBox" name="groupBox_2">
@@ -330,6 +342,7 @@ border-radius:0px;}
               <property name="styleSheet">
                <string notr="true">#groupBox_2{
 border: 0px solid #42adff;
+border-bottom: 1px solid rgba(200, 200, 200,100);
 border-radius:0px;}</string>
               </property>
               <property name="title">
@@ -337,13 +350,13 @@ border-radius:0px;}</string>
               </property>
               <layout class="QHBoxLayout" name="horizontalLayout_35">
                <property name="leftMargin">
-                <number>2</number>
+                <number>11</number>
                </property>
                <property name="topMargin">
                 <number>0</number>
                </property>
                <property name="rightMargin">
-                <number>0</number>
+                <number>11</number>
                </property>
                <property name="bottomMargin">
                 <number>0</number>
@@ -387,8 +400,8 @@ color: rgb(218, 218, 218);
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
-                   <width>40</width>
-                   <height>20</height>
+                   <width>37</width>
+                   <height>39</height>
                   </size>
                  </property>
                 </spacer>
@@ -398,15 +411,18 @@ color: rgb(218, 218, 218);
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <property name="leftMargin">
+               <number>11</number>
+              </property>
               <property name="rightMargin">
-               <number>7</number>
+               <number>11</number>
               </property>
               <item>
                <widget class="QLabel" name="label_3">
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>35</height>
+                  <height>28</height>
                  </size>
                 </property>
                 <property name="maximumSize">
@@ -437,7 +453,7 @@ color: rgb(218, 218, 218);
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>35</height>
+                  <height>28</height>
                  </size>
                 </property>
                 <property name="styleSheet">
@@ -492,6 +508,12 @@ border-image: url(:/img/icon/下拉_白色.png);
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_9">
+              <property name="leftMargin">
+               <number>11</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
               <item>
                <widget class="QLabel" name="label_10">
                 <property name="maximumSize">
@@ -794,6 +816,12 @@ background-color: rgba(48,148,243,80);}</string>
               <property name="spacing">
                <number>4</number>
               </property>
+              <property name="leftMargin">
+               <number>11</number>
+              </property>
+              <property name="rightMargin">
+               <number>11</number>
+              </property>
               <item>
                <widget class="QLabel" name="label_2">
                 <property name="styleSheet">
@@ -915,6 +943,12 @@ QSlider::sub-page:horizontal{
              <layout class="QVBoxLayout" name="verticalLayout">
               <property name="spacing">
                <number>4</number>
+              </property>
+              <property name="leftMargin">
+               <number>11</number>
+              </property>
+              <property name="rightMargin">
+               <number>11</number>
               </property>
               <item>
                <widget class="QLabel" name="label">
@@ -1043,6 +1077,12 @@ QSlider::sub-page:horizontal{
              <layout class="QVBoxLayout" name="verticalLayout_5">
               <property name="spacing">
                <number>4</number>
+              </property>
+              <property name="leftMargin">
+               <number>11</number>
+              </property>
+              <property name="rightMargin">
+               <number>11</number>
               </property>
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_14">
@@ -1224,11 +1264,46 @@ QSlider::sub-page:horizontal{
              </layout>
             </item>
             <item>
-             <widget class="QCheckBox" name="saveCheckBox">
+             <widget class="QGroupBox" name="groupBox_6">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>42</height>
+               </size>
+              </property>
               <property name="styleSheet">
-               <string notr="true">
+               <string notr="true">#groupBox_6{
+border: 0px solid #42adff;
+border-radius:0px;}</string>
+              </property>
+              <property name="title">
+               <string/>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_36">
+               <property name="leftMargin">
+                <number>11</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>11</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QCheckBox" name="saveCheckBox">
+                 <property name="styleSheet">
+                  <string notr="true">
 QCheckBox
-{font-size: 16px;
+{font-size: 18px;
 	font-family: &quot;Microsoft YaHei&quot;;
 	font-weight: bold;
  		border-radius:9px;
@@ -1248,23 +1323,69 @@ QCheckBox::indicator:checked {
     image: url(:/img/icon/button-on.png);
 }
 </string>
-              </property>
-              <property name="text">
-               <string>save automatically</string>
-              </property>
-              <property name="checked">
-               <bool>true</bool>
-              </property>
+                 </property>
+                 <property name="text">
+                  <string>save automatically</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </widget>
             </item>
             <item>
-             <layout class="QVBoxLayout" name="verticalLayout_7">
+             <layout class="QVBoxLayout" name="verticalLayout_7" stretch="0,1">
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
               <item>
-               <widget class="QLabel" name="label_11">
+               <widget class="QGroupBox" name="groupBox_9">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>42</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>42</height>
+                 </size>
+                </property>
                 <property name="styleSheet">
-                 <string notr="true">QLabel
+                 <string notr="true">#groupBox_9{
+border: 0px solid #42adff;
+border-top: 1px solid rgba(200, 200, 200,100);
+border-bottom: 1px solid rgba(200, 200, 200,100);
+border-radius:0px;}</string>
+                </property>
+                <property name="title">
+                 <string/>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_38">
+                 <property name="leftMargin">
+                  <number>11</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>11</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="label_11">
+                   <property name="styleSheet">
+                    <string notr="true">QLabel
 {
-	font-size: 18px;
+	font-size: 22px;
 	font-family: &quot;Microsoft YaHei&quot;;
 	font-weight: bold;
  		border-radius:9px;
@@ -1272,26 +1393,80 @@ QCheckBox::indicator:checked {
 color: rgb(218, 218, 218);
 }
 </string>
-                </property>
-                <property name="text">
-                 <string>result statistics</string>
-                </property>
+                   </property>
+                   <property name="text">
+                    <string>result statistics</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_15">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>37</width>
+                     <height>39</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
                </widget>
               </item>
               <item>
-               <widget class="QListWidget" name="resultWidget">
+               <widget class="QGroupBox" name="groupBox_10">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>42</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
                 <property name="styleSheet">
-                 <string notr="true">QListWidget{
+                 <string notr="true">#groupBox_10{
+border: 0px solid #42adff;
+
+border-radius:0px;}</string>
+                </property>
+                <property name="title">
+                 <string/>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_39">
+                 <property name="leftMargin">
+                  <number>11</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>11</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QListWidget" name="resultWidget">
+                   <property name="styleSheet">
+                    <string notr="true">QListWidget{
 background-color: rgba(12, 28, 77, 0);
-border: 1px solid rgba(200, 200, 200,100);
-border-bottom: 0px solid rgba(200, 200, 200,100);
+
 border-radius:0px;
 font-family: &quot;Microsoft YaHei&quot;;
 font-size: 16px;
 color: rgb(218, 218, 218);
 }
 </string>
-                </property>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
               </item>
              </layout>
@@ -1313,7 +1488,13 @@ border-radius:0px;}</string>
             <string/>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0,1,0">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
             <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
              <number>0</number>
             </property>
             <property name="bottomMargin">
@@ -1336,6 +1517,7 @@ border-radius:0px;}</string>
               <property name="styleSheet">
                <string notr="true">#groupBox_3{
 border: 0px solid #42adff;
+border-bottom: 1px solid rgba(200, 200, 200,100);
 border-radius:0px;}</string>
               </property>
               <property name="title">
@@ -1343,13 +1525,13 @@ border-radius:0px;}</string>
               </property>
               <layout class="QHBoxLayout" name="horizontalLayout_6">
                <property name="leftMargin">
-                <number>0</number>
+                <number>11</number>
                </property>
                <property name="topMargin">
                 <number>0</number>
                </property>
                <property name="rightMargin">
-                <number>0</number>
+                <number>11</number>
                </property>
                <property name="bottomMargin">
                 <number>0</number>
@@ -1381,7 +1563,7 @@ color: rgb(218, 218, 218);
 </string>
                  </property>
                  <property name="text">
-                  <string>video</string>
+                  <string>view</string>
                  </property>
                 </widget>
                </item>
@@ -1537,8 +1719,11 @@ color: rgb(218, 218, 218);
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_12">
+              <property name="leftMargin">
+               <number>11</number>
+              </property>
               <property name="rightMargin">
-               <number>0</number>
+               <number>11</number>
               </property>
               <item>
                <widget class="QPushButton" name="runButton">
