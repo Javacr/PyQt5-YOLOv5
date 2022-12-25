@@ -509,7 +509,8 @@ class MainWindow(QMainWindow, Ui_mainWindow):
             ih, iw, _ = img_src.shape
             w = label.geometry().width()
             h = label.geometry().height()
-            if iw > ih:
+            # keep original aspect ratio
+            if iw/w > ih/h:
                 scal = w / iw
                 nw = w
                 nh = int(scal * ih)
