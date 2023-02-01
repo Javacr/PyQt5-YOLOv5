@@ -6,7 +6,13 @@ Download the models of  YOLOv5 v6.1 from [here](https://github.com/ultralytics/y
 
 Other versions: [v5.0](https://github.com/Javacr/PyQt5-YOLOv5/tree/yolov5_v5.0), ...
 
-### Updated Date：2022/12/4
+If you don't interested in code, you can use this GUI. Download link: [Google Drive](https://drive.google.com/file/d/1UpU0zqDsH_fgkiHw7wLakFMygULXM6qc/view?usp=sharing) or [Baidu Netdisk-pwd=6666](https://pan.baidu.com/s/105Hl2UqRSaDbh4hJQWQ8rg?pwd=6666 ).
+
+Download the zip file and unzip it to the destination, find and run main.exe
+
+![location](./imgs/exe_location.JPG)
+
+### Updated Date：2023/2/1
 ![GUI](./imgs/GUI_new.png)
 
 ![RUNNING](./imgs/Running.png)
@@ -24,6 +30,22 @@ conda activate yolov5_pyqt5
 pip install -r requirements.txt
 python main.py
 ```
+### About Packaging
+
+- install pyinstaller
+
+```
+pip install pyinstaller==5.7.0
+```
+
+- package the GUI
+
+```
+pyinstaller -D -w --add-data="./utils/*;./utils" --add-data="./config/*;./config" --add-data="./icon/*;./icon" --add-data="./pt/*;./pt" --add-data="./imgs/*;./imgs" main.py
+```
+
+- if no errors occur, the packaged application is in dist/main
+
 ### Function
 
 1. support image/video/webcam/rtsp as input
