@@ -402,8 +402,8 @@ class MainWindow(QMainWindow, Ui_mainWindow):
                 rate = config['rate']
                 check = config['check']
                 savecheck = config['savecheck']
-        self.confSpinBox.setValue(iou)
-        self.iouSpinBox.setValue(conf)
+        self.confSpinBox.setValue(conf)
+        self.iouSpinBox.setValue(iou)
         self.rateSpinBox.setValue(rate)
         self.checkBox.setCheckState(check)
         self.det_thread.rate_check = check
