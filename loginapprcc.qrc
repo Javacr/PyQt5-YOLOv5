@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="img">
+    <file>ui_img/background.jpg</file>
+    <file>ui_img/关闭.png</file>
+    <file>ui_img/最大化.png</file>
+    <file>ui_img/最小化.png</file>
+    <file>ui_img/rebackground.jpg</file>
+  </qresource>
+</RCC>

@@ -1,0 +1,31 @@
+<RCC>
+  <qresource prefix="img">
+    <file>icon/button-off.png</file>
+    <file>icon/button-on.png</file>
+    <file>icon/暂停.png</file>
+    <file>icon/笑脸.png</file>
+    <file>icon/终止.png</file>
+    <file>icon/下拉_白色.png</file>
+    <file>icon/正方形.png</file>
+    <file>icon/实时视频流解析.png</file>
+    <file>icon/运行.png</file>
+    <file>icon/conan.png</file>
+    <file>icon/还原.png</file>
+    <file>icon/doctor.png</file>
+    <file>icon/圆.png</file>
+    <file>icon/evil.png</file>
+    <file>icon/关闭.png</file>
+    <file>icon/箭头_列表收起.png</file>
+    <file>icon/箭头_列表展开.png</file>
+    <file>icon/最小化.png</file>
+    <file>icon/background.jpg</file>
+    <file>icon/背景.png</file>
+    <file>icon/打开.png</file>
+    <file>icon/摄像头关.png</file>
+    <file>icon/摄像头开.png</file>
+    <file>icon/数据探索.png</file>
+    <file>icon/停止.png</file>
+    <file>icon/图片1.png</file>
+    <file>icon/赞停.png</file>
+  </qresource>
+</RCC>
