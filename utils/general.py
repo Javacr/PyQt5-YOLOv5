@@ -20,7 +20,7 @@ from multiprocessing.pool import ThreadPool
 from pathlib import Path
 from subprocess import check_output
 from zipfile import ZipFile
-
+from typing import Optional
 import cv2
 import numpy as np
 import pandas as pd
@@ -28,7 +28,7 @@ import pkg_resources as pkg
 import torch
 import torchvision
 import yaml
-
+import inspect
 from utils.downloads import gsutil_getsize
 from utils.metrics import box_iou, fitness
 
@@ -46,6 +46,26 @@ pd.options.display.max_columns = 10
 cv2.setNumThreads(0)  # prevent OpenCV from multithreading (incompatible with PyTorch DataLoader)
 os.environ['NUMEXPR_MAX_THREADS'] = str(NUM_THREADS)  # NumExpr max threads
 
+def check_version(current='0.0.0', minimum='0.0.0', name='version ', pinned=False, hard=False, verbose=False):
+    # Check version vs. required version
+    current, minimum = (pkg.parse_version(x) for x in (current, minimum))
+    result = (current == minimum) if pinned else (current >= minimum)  # bool
+    s = f'WARNING ⚠️ {name}{minimum} is required by YOLOv5, but {name}{current} is currently installed'  # string
+    if hard:
+        assert result, emojis(s)  # assert min requirements met
+    if verbose and not result:
+        LOGGER.warning(s)
+    return result
+
+def yaml_save(file='data.yaml', data={}):
+    # Single-line safe yaml saving
+    with open(file, 'w') as f:
+        yaml.safe_dump({k: str(v) if isinstance(v, Path) else v for k, v in data.items()}, f, sort_keys=False)
+
+def get_default_args(func):
+    # Get func() default arguments
+    signature = inspect.signature(func)
+    return {k: v.default for k, v in signature.parameters.items() if v.default is not inspect.Parameter.empty}
 
 def is_kaggle():
     # Is environment a Kaggle Notebook?
@@ -163,6 +183,19 @@ def print_args(name, opt):
     # Print argparser arguments
     LOGGER.info(colorstr(f'{name}: ') + ', '.join(f'{k}={v}' for k, v in vars(opt).items()))
 
+def print_args(args: Optional[dict] = None, show_file=True, show_func=False):
+    # Print function arguments (optional args dict)
+    x = inspect.currentframe().f_back  # previous frame
+    file, _, func, _, _ = inspect.getframeinfo(x)
+    if args is None:  # get args automatically
+        args, _, _, frm = inspect.getargvalues(x)
+        args = {k: v for k, v in frm.items() if k in args}
+    try:
+        file = Path(file).resolve().relative_to(ROOT).with_suffix('')
+    except ValueError:
+        file = Path(file).stem
+    s = (f'{file}: ' if show_file else '') + (f'{func}: ' if show_func else '')
+    LOGGER.info(colorstr(s) + ', '.join(f'{k}={v}' for k, v in args.items()))
 
 def init_seeds(seed=0):
     # Initialize random number generator (RNG) seeds https://pytorch.org/docs/stable/notes/randomness.html

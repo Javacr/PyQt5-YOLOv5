@@ -260,7 +260,7 @@ class LoadWebcam:  # for inference
 
         # Read frame
         ret_val, img0 = self.cap.read()
-        img0 = cv2.flip(img0, 1)  # flip left-right
+        #img0 = cv2.flip(img0, 1)  # flip left-right
 
         # Print
         assert ret_val, f'Camera Error {self.pipe}'
