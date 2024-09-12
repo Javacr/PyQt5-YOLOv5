@@ -1,6 +1,6 @@
 {
-  "iou": 0.38,
-  "conf": 0.4,
+  "iou": 0.42,
+  "conf": 0.38,
   "rate": 20,
   "check": 0,
   "savecheck": 2
